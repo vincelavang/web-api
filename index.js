@@ -9,6 +9,8 @@ app.get('/notes', function (req, res) {
   res.json(notes)
 })
 
+app.use(jsonParser)
+
 app.post('/notes', function (req, res) {
   notes.push(req.body)
   res.sendStatus(201)
