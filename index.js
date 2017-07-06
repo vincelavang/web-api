@@ -18,6 +18,17 @@ app.post('/notes', function (req, res) {
   res.sendStatus(201)
 })
 
+app.put('/notes/:id', function(req, res) {
+  notes.forEach(function(item) {
+    if (item.id === Number(req.params.id)) {
+      for (const prop in req.body) {
+        item[prop] = req.body[prop]
+      }
+    }
+  })
+  res.sendStatus(200)
+})
+
 app.listen(3000, () => {
   console.log('Listening on port 3000!')
 })
